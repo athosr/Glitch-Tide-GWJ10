@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://player/interface/Interface.gd" type="Script" id=1]
+
+[node name="DebugInterface" type="Control"]
+margin_left = -0.15799
+margin_top = 1.211
+margin_right = 1023.84
+margin_bottom = 598.211
+rect_pivot_offset = Vector2( 21.0526, 454.053 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Debug Interface" type="Label" parent="."]
+margin_left = 70.0
+margin_top = 120.0
+margin_right = 115.0
+margin_bottom = 134.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Debug Interface"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = 110.0
+margin_right = 207.0
+margin_bottom = 348.0
+color = Color( 0, 0, 0, 0.180392 )
+
+[node name="state" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 150.0
+margin_right = 70.0
+margin_bottom = 164.0
+custom_colors/font_color = Color( 0, 1, 0.0627451, 1 )
+text = "State: "
+
+[node name="label" type="Label" parent="state"]
+margin_left = 40.0
+margin_right = 80.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+
+[node name="location" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 180.0
+margin_right = 92.0
+margin_bottom = 194.0
+custom_colors/font_color = Color( 0, 1, 0.0627451, 1 )
+text = "Location: "
+
+[node name="label" type="Label" parent="location"]
+margin_left = 63.0
+margin_right = 103.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+
