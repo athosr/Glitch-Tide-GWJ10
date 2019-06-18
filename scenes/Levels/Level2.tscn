@@ -1,47 +1,623 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Levels/Level2.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://shaders/wind.shader" type="Shader" id=3]
-[ext_resource path="res://assets/sprites/misc/glitch_background.png" type="Texture" id=4]
+[ext_resource path="res://shaders/glitch2.shader" type="Shader" id=2]
+[ext_resource path="res://assets/sprites/misc/glitch_background.png" type="Texture" id=3]
+[ext_resource path="res://shaders/wind.shader" type="Shader" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/world/platforms/platform.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Creatures/GlitchCreature.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Etc/Portal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 130.966, 10 )
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/color = Vector3( 0.33, 0.15, 0.82 )
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 3 )
+shader = ExtResource( 4 )
 shader_param/OCTAVES = 6
 shader_param/color = Vector3( 0.33, 0.15, 0.82 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1249.2, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2311.66, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 571.045, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 643.978, 117.033 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 1349.64, 117.033 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 1276.55, 117.033 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1075.64, 8.00293 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 151.593, 8.00293 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 117.05, 53.4903 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 126.801, 29.7564 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 1046.42, 646.66 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 2312.94, 1156.93 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "creature_attack"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlitchCreature:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1017.81, -93.4559 ), Vector2( 7611.73, -196.948 ), Vector2( 6983.38, 2249.9 ), Vector2( 1786.61, -1254.05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GlitchCreature:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 30.0, 30.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GlitchCreature:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlitchCreature:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 3.1, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1017.81, 66.5441 ), Vector2( 7279.06, 63.072 ), Vector2( 7279.06, -136.928 ), Vector2( 855.487, 1167.23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GlitchCreature:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 3.1, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, -8.58734 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GlitchCreature:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 3.1, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
+}
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="WorldBorders" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorders"]
+[node name="Backgrounds" type="Node2D" parent="."]
 editor/display_folded = true
-position = Vector2( 914.278, 362.428 )
+
+[node name="background" type="Sprite" parent="Backgrounds"]
+material = SubResource( 1 )
+position = Vector2( 4316.27, 2370.78 )
+scale = Vector2( 2.03135, 2.00069 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="background2" type="Sprite" parent="Backgrounds"]
+material = SubResource( 2 )
+position = Vector2( 4338.01, 561.194 )
+scale = Vector2( 4.49364, 4.04345 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="icon2" type="Sprite" parent="Backgrounds"]
+position = Vector2( 13812.8, -5923.35 )
+scale = Vector2( 4.62043, 3.91801 )
+texture = ExtResource( 5 )
+
+[node name="icon" type="Sprite" parent="Backgrounds"]
+position = Vector2( 12169.3, 6713.84 )
+scale = Vector2( 4.62043, 3.91801 )
+texture = ExtResource( 5 )
+
+[node name="WorldBorders" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Walls" type="StaticBody2D" parent="WorldBorders"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/Walls"]
+position = Vector2( 2037.72, 499.156 )
+rotation = 1.57079
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldBorders/Walls"]
+position = Vector2( 4353.73, -671.621 )
+rotation = 3.14159
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders/Walls"]
+position = Vector2( 3336.04, 2338.82 )
+rotation = 1.57079
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBorders/Walls"]
+position = Vector2( 5336.04, 2338.82 )
+rotation = -1.57079
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders/Walls"]
+position = Vector2( 6627.7, 544.335 )
+rotation = 1.57079
+shape = SubResource( 3 )
+
+[node name="teleport_left" type="Area2D" parent="WorldBorders"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/teleport_left"]
+position = Vector2( 2628.1, 1868.76 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders/teleport_left"]
+position = Vector2( 1912.53, 687.895 )
+rotation = 1.57079
+shape = SubResource( 14 )
+
+[node name="teleport_right" type="Area2D" parent="WorldBorders"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/teleport_right"]
+position = Vector2( 5998.1, 1869.76 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders/teleport_right"]
+position = Vector2( 6768.69, 653.505 )
+rotation = -1.57079
+shape = SubResource( 15 )
+
+[node name="t_player_left" type="Position2D" parent="WorldBorders"]
+position = Vector2( 3388.98, 1930.5 )
+
+[node name="t_player_right" type="Position2D" parent="WorldBorders"]
+position = Vector2( 5278.98, 1930.5 )
+
+[node name="Platforms" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="SolidInvisible" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 4318.99, 2227.11 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/StaticBody2D"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidInvisible"]
+position = Vector2( 0, 10 )
+shape = SubResource( 7 )
+
+[node name="SolidInvisible2" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 4318.99, 1917.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidInvisible2"]
+position = Vector2( 0, 10 )
+shape = SubResource( 8 )
 one_way_collision = true
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 502.583, 204.957 )
+[node name="SolidInvisible3" type="StaticBody2D" parent="Platforms"]
+position = Vector2( 3345.35, 1618.33 )
+rotation = 1.57079
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -46.1748, -12.2545 )
+[node name="SolidVisible" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 4318.99, 1567.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible2" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 3588.99, 1247.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible2"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible2"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible3" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 4958.99, 1247.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible3"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible3"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible4" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 5968.99, 1247.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible4"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible4"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible5" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 6488.99, 907.108 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible5"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible5"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible6" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 2518.99, 1247.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible6"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible6"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible7" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 2208.99, 867.108 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible7"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible7"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible8" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 4314.09, 283.911 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible8"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible8"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible9" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 3359.41, 483.636 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible9"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible9"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible11" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 2738.28, 643.416 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible11"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible11"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible12" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 3313.48, -175.457 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible12"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible12"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible13" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 5258.81, -211.407 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible13"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible13"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="SolidVisible14" type="StaticBody2D" parent="Platforms"]
+editor/display_folded = true
+position = Vector2( 3855.44, -23.6656 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platforms/SolidVisible14"]
+position = Vector2( 0, 38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible14"]
+position = Vector2( 0, 30 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="Void" type="Sprite" parent="Platforms"]
+position = Vector2( 5448.99, 1057.11 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="Void2" type="Sprite" parent="Platforms"]
+position = Vector2( 3008.99, 1057.11 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="Void4" type="Sprite" parent="Platforms"]
+position = Vector2( 4318.99, 1127.11 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="Void5" type="Sprite" parent="Platforms"]
+position = Vector2( 4315.22, 717.077 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 7.5332, 0.0609131 )
+
+[node name="Void6" type="Sprite" parent="Platforms"]
+position = Vector2( 5757.65, 649.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 7.5332, 0.0609131 )
+
+[node name="Void8" type="Sprite" parent="Platforms"]
+position = Vector2( 5137.65, 509.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 7.5332, 0.0609131 )
+
+[node name="Void7" type="Sprite" parent="Platforms"]
+position = Vector2( 4794.98, 18.0399 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 7.5332, 0.0609131 )
+
+[node name="EventTriggers" type="Node2D" parent="."]
+
+[node name="LightsOn" type="Area2D" parent="EventTriggers"]
+editor/display_folded = true
+position = Vector2( 4310.17, 222.92 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/LightsOn"]
+shape = SubResource( 9 )
+
+[node name="Area2" type="Area2D" parent="EventTriggers"]
+position = Vector2( 4321.19, 1515.27 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/Area2"]
+shape = SubResource( 16 )
+
+[node name="Timer" type="Timer" parent="EventTriggers/Area2"]
+wait_time = 4.0
+
+[node name="Area2Position" type="Position2D" parent="EventTriggers"]
+position = Vector2( 4321.19, 1485.27 )
+
+[node name="Camera1" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Camera1"]
+position = Vector2( 4310.84, 2371.1 )
 current = true
-zoom = Vector2( 3, 3 )
+zoom = Vector2( 2, 2 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_limit_end = Vector2( 0, 1800 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera1"]
+position = Vector2( 4324.7, 2536.22 )
+shape = SubResource( 10 )
 
-[node name="glitch_background" type="Sprite" parent="ParallaxBackground"]
-material = SubResource( 2 )
-position = Vector2( 510.079, 482.075 )
-scale = Vector2( 1.01555, 5 )
-texture = ExtResource( 4 )
+[node name="Camera2" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 0, -60 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Camera2"]
+position = Vector2( 4332.84, 613.096 )
+zoom = Vector2( 4.5, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2"]
+position = Vector2( 4330.13, 652.909 )
+shape = SubResource( 11 )
+
+[node name="GlitchCreature" parent="." instance=ExtResource( 7 )]
+position = Vector2( 855.487, 1167.23 )
+rotation = -0.149877
+scale = Vector2( -1, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/creature_attack = SubResource( 12 )
+anims/creature_patrol = SubResource( 13 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Portal" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+position = Vector2( 4311, -453.789 )
+next_level = "res://scenes/Levels/Level3.tscn"
+
+[node name="Light2D2" type="Light2D" parent="Portal"]
+texture = ExtResource( 9 )
+texture_scale = 2.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="PlayerStart" type="Position2D" parent="."]
+position = Vector2( 4330.98, 2118.51 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[connection signal="body_entered" from="WorldBorders/teleport_left" to="." method="_on_teleport_left_body_entered"]
+[connection signal="body_entered" from="WorldBorders/teleport_right" to="." method="_on_teleport_right_body_entered"]
+[connection signal="body_entered" from="EventTriggers/LightsOn" to="." method="_on_LightsOn_body_entered"]
+[connection signal="body_exited" from="EventTriggers/LightsOn" to="." method="_on_LightsOn_body_exited"]
+[connection signal="body_entered" from="EventTriggers/Area2" to="." method="_on_Area2_body_entered"]
+[connection signal="timeout" from="EventTriggers/Area2/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Camera1" to="." method="_on_Camera1_body_entered"]
+[connection signal="body_entered" from="Camera2" to="." method="_on_Camera2_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

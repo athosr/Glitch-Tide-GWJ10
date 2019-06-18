@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platform2.svg-41bdcc8090e0d78a8b2d6230c0270245.stex"
+path="res://.import/test.png-d934a279e4a959cb8748b27122ad7bb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/platforms/platform2.svg"
-dest_files=[ "res://.import/platform2.svg-41bdcc8090e0d78a8b2d6230c0270245.stex" ]
+source_file="res://assets/sprites/misc/test.png"
+dest_files=[ "res://.import/test.png-d934a279e4a959cb8748b27122ad7bb1.stex" ]
 
 [params]
 

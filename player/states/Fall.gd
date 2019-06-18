@@ -21,6 +21,11 @@ func update(delta : float) -> void:
 	if owner.is_on_floor():
 		emit_signal("finished", "idle")
 
+	if is_moving_right:
+		owner.motion.x = min(owner.motion.x + owner.ACCELERATION, owner.MAX_SPEED)
+	if is_moving_left:
+		owner.motion.x = max(owner.motion.x - owner.ACCELERATION, -owner.MAX_SPEED)
+
 func disable_collider():
 	owner.collider.disabled = true
 	$Timer.start()

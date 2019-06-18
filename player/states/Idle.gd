@@ -15,8 +15,6 @@ func handle_input(event : InputEvent) -> void:
 
 
 func update(delta : float) -> void:
-	if PlayerVariables.current_scene.name == 'Level2':
-		emit_signal('finished', 'diving')
 	update_animation(owner.look_direction)
 	var input_direction : Vector2 = get_input_direction()
 	owner.friction = true

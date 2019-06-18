@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pillar.svg-bbb327288250dcdf9f4fd821ffd3bb24.stex"
+path="res://.import/light.png-523ade4bc0c15e8333eaf0e4370a132f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/platforms/pillar.svg"
-dest_files=[ "res://.import/pillar.svg-bbb327288250dcdf9f4fd821ffd3bb24.stex" ]
+source_file="res://assets/sprites/misc/light.png"
+dest_files=[ "res://.import/light.png-523ade4bc0c15e8333eaf0e4370a132f.stex" ]
 
 [params]
 

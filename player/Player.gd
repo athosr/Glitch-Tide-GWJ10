@@ -21,6 +21,13 @@ onready var collider = $CollisionShape2D
 var collision_info : KinematicCollision2D
 
 func _ready():
+	$BodyPivot/player_arrow.visible = true
+	$Effects.play('arrow')
+	var timer = Timer.new()
+	timer.wait_time = 5
+	add_child(timer)
+	timer.start()
+	timer.connect("timeout", self, "end_arrow")
 	original_gravity = GRAVITY
 	$BodyPivot/BodyParameter.scale.x *= -1
 	self.add_to_group("player")
@@ -50,3 +57,7 @@ func _physics_process(delta) -> void:
 
 	motion = Vector2(round(motion.x), round(motion.y))
 	motion = move_and_slide(motion, UP)
+
+func end_arrow():
+	$BodyPivot/player_arrow.visible = false
+	$Effects.stop()

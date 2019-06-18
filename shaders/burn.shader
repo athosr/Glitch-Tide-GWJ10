@@ -39,5 +39,5 @@ void fragment(){
 	
 	float noise = fbm(UV * float(99));
 	
-	COLOR.rgb = tex.rgb * (noise * abs(sin(TIME)*5.) + .5);
+	COLOR.rgb = tex.rgb * (noise * abs(sin(TIME)*10.) + 2.);
 }
