@@ -20,9 +20,6 @@ onready var collider = $CollisionShape2D
 
 var collision_info : KinematicCollision2D
 
-func _unhandled_input(event):
-	print(event == null)
-
 func _ready():
 	$BodyPivot/PlayerArrow.visible = true
 	$Effects.play('arrow')
@@ -38,9 +35,6 @@ func _ready():
 func _physics_process(delta) -> void:
 	# Applies gravity and friction
 	motion.y += GRAVITY
-
-	if Input.is_action_just_pressed("debug"): $CanvasLayer/DebugInterface.visible = false if $CanvasLayer/DebugInterface.visible else true
-	if Input.is_action_just_pressed("debug"): $CanvasLayer/Popup.popup()
 
 	# Applies resistence
 	if is_on_floor():

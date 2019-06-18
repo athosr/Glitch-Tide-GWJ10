@@ -1,12 +1,13 @@
 extends Node2D
 
-var player = load("res://scenes/Player/Player.tscn")
-var fade = load("res://scenes/Interface/Fade.tscn")
-var dialog = load("res://scenes/Interface/DialogBox.tscn")
+var player = load("res://scenes/Player/Player.tscn") as PackedScene
+var fade = load("res://scenes/Interface/Fade.tscn") as PackedScene
+var dialog = load("res://scenes/Interface/DialogBox.tscn") as PackedScene
 
-var d = dialog.instance()
+var d
 
 func _ready():
+	d = dialog.instance()
 	if PlayerVariables.deaths == 0:
 		d.dialog = ['What the fuck is happening here?', "This doesn't makes any sense at all", 'Well, maybe just a little bit']
 	else:
@@ -31,5 +32,4 @@ func dialog_finished():
 	f.in_mode = false
 	$CanvasLayer.add_child(f)
 	yield(f, "finished")
-	var p = player.instance()
-	$PlayerStart.add_child(p)
+	$PlayerStart.add_child(player.instance())

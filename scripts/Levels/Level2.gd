@@ -1,8 +1,8 @@
 extends Node2D
 
-var player = preload("res://scenes/Player/Player.tscn")
-var fade = preload("res://scenes/Interface/Fade.tscn")
-var dialog = preload("res://scenes/Interface/DialogBox.tscn")
+var player = preload("res://scenes/Player/Player.tscn") as PackedScene
+var fade = preload("res://scenes/Interface/Fade.tscn") as PackedScene
+var dialog = preload("res://scenes/Interface/DialogBox.tscn") as PackedScene
 
 var creature_attacking : bool = false
 var d = dialog.instance()
