@@ -14,6 +14,7 @@
 [ext_resource path="res://player/states/Fall.gd" type="Script" id=12]
 [ext_resource path="res://player/states/Diving.gd" type="Script" id=13]
 [ext_resource path="res://assets/sprites/player/eye_closed.png" type="Texture" id=14]
+[ext_resource path="res://arrow.tres" type="Animation" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 33.2394
@@ -518,47 +519,6 @@ length = 0.5
 length = 2.0
 
 [sub_resource type="Animation" id=14]
-resource_name = "arrow"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("BodyPivot/PlayerArrow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ), Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ), Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/PlayerArrow:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyPivot/PlayerArrow:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.12 ), Vector2( -0.1, 0.12 ) ]
-}
-
-[sub_resource type="Animation" id=15]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/BodyParameter:modulate")
@@ -585,6 +545,7 @@ AIR_LERP = 0.1
 MAX_JUMPS = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 2.63019, 6.2605 )
 scale = Vector2( 0.72, 1 )
 z_index = 10
@@ -605,7 +566,6 @@ shape = SubResource( 2 )
 position = Vector2( -23, 24 )
 
 [node name="BodyParameter" type="Sprite" parent="BodyPivot"]
-editor/display_folded = true
 scale = Vector2( 0.15, 0.15 )
 
 [node name="body" type="Sprite" parent="BodyPivot/BodyParameter"]
@@ -627,7 +587,7 @@ texture = ExtResource( 4 )
 
 [node name="arm" type="Sprite" parent="BodyPivot/BodyParameter/body"]
 position = Vector2( -91.4609, -266.218 )
-rotation = 4.45059
+rotation = 3.14159
 texture = ExtResource( 5 )
 offset = Vector2( -79.0012, -40.7368 )
 __meta__ = {
@@ -641,7 +601,7 @@ offset = Vector2( -19.636, -20.8538 )
 
 [node name="arm2" type="Sprite" parent="BodyPivot/BodyParameter/body"]
 position = Vector2( 4.55957, -270.903 )
-rotation = 4.55449
+rotation = 4.20446
 scale = Vector2( 1, -1 )
 texture = ExtResource( 5 )
 offset = Vector2( -79.0012, -40.7368 )
@@ -651,14 +611,14 @@ __meta__ = {
 
 [node name="hand" type="Sprite" parent="BodyPivot/BodyParameter/body/arm2"]
 position = Vector2( -156.423, -90.9956 )
-rotation = 1.25458
+rotation = 1.0472
 scale = Vector2( 1, -1 )
 texture = ExtResource( 6 )
 offset = Vector2( -19.636, -20.8538 )
 
 [node name="PlayerArrow" type="Sprite" parent="BodyPivot"]
-position = Vector2( -27.9751, -134.597 )
-scale = Vector2( 0.1, 0.12 )
+position = Vector2( -27.9751, -139.135 )
+scale = Vector2( -0.0408967, 0.12 )
 z_index = 1
 texture = ExtResource( 7 )
 
@@ -676,7 +636,6 @@ script = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [node name="Fall" type="Node" parent="StateMachine"]
-editor/display_folded = true
 script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="StateMachine/Fall"]
@@ -699,6 +658,7 @@ anims/spell1 = SubResource( 12 )
 anims/spell2 = SubResource( 13 )
 
 [node name="Effects" type="AnimationPlayer" parent="."]
-anims/arrow = SubResource( 14 )
-anims/fade_in = SubResource( 15 )
+anims/arrow = ExtResource( 15 )
+anims/fade_in = SubResource( 14 )
+
 [connection signal="timeout" from="StateMachine/Fall/Timer" to="StateMachine/Fall" method="_on_Timer_timeout"]
