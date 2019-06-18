@@ -20,8 +20,11 @@ onready var collider = $CollisionShape2D
 
 var collision_info : KinematicCollision2D
 
+func _unhandled_input(event):
+	print(event == null)
+
 func _ready():
-	$BodyPivot/player_arrow.visible = true
+	$BodyPivot/PlayerArrow.visible = true
 	$Effects.play('arrow')
 	var timer = Timer.new()
 	timer.wait_time = 5
@@ -59,5 +62,5 @@ func _physics_process(delta) -> void:
 	motion = move_and_slide(motion, UP)
 
 func end_arrow():
-	$BodyPivot/player_arrow.visible = false
+	$BodyPivot/PlayerArrow.visible = false
 	$Effects.stop()

@@ -1,8 +1,8 @@
 extends Node2D
 
-var player = preload("res://scenes/Player/Player.tscn")
-var fade = preload("res://scenes/Interface/Fade.tscn")
-var dialog = preload("res://scenes/Interface/DialogBox.tscn")
+var player = load("res://scenes/Player/Player.tscn")
+var fade = load("res://scenes/Interface/Fade.tscn")
+var dialog = load("res://scenes/Interface/DialogBox.tscn")
 
 var d = dialog.instance()
 
@@ -31,4 +31,5 @@ func dialog_finished():
 	f.in_mode = false
 	$CanvasLayer.add_child(f)
 	yield(f, "finished")
-	$PlayerStart.add_child(player.instance())
+	var p = player.instance()
+	$PlayerStart.add_child(p)

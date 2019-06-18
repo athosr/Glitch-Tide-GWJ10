@@ -522,7 +522,7 @@ resource_name = "arrow"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyPivot/player_arrow:position")
+tracks/0/path = NodePath("BodyPivot/PlayerArrow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -534,7 +534,7 @@ tracks/0/keys = {
 "values": [ Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ), Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ), Vector2( -27.9751, -134.597 ), Vector2( -27.9751, -174.597 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/player_arrow:rotation_degrees")
+tracks/1/path = NodePath("BodyPivot/PlayerArrow:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -546,7 +546,7 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyPivot/player_arrow:scale")
+tracks/2/path = NodePath("BodyPivot/PlayerArrow:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -656,7 +656,7 @@ scale = Vector2( 1, -1 )
 texture = ExtResource( 6 )
 offset = Vector2( -19.636, -20.8538 )
 
-[node name="player_arrow" type="Sprite" parent="BodyPivot"]
+[node name="PlayerArrow" type="Sprite" parent="BodyPivot"]
 position = Vector2( -27.9751, -134.597 )
 scale = Vector2( 0.1, 0.12 )
 z_index = 1
