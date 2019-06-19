@@ -37,10 +37,7 @@ func update(delta : float) -> void:
 func update_animation(motion: Vector2) -> void:
 	var animation : String = ''
 
-	if owner.motion.x:
-		animation = "sliding"
-	else:
-		animation = "idle"
+	animation = "idle"
 
 	if animation == '':
 		return

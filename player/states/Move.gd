@@ -30,6 +30,7 @@ func update(delta : float) -> void:
 	if is_moving_left:
 		owner.motion.x = max(owner.motion.x - owner.ACCELERATION, -owner.MAX_SPEED)
 
+
 func update_animation(motion: Vector2) -> void:
 	var animation : String = ''
 

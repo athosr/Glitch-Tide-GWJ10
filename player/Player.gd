@@ -17,20 +17,11 @@ var friction : bool = true
 var is_alive : bool = true
 
 onready var collider = $CollisionShape2D
-
 var collision_info : KinematicCollision2D
 
 func _ready():
-	$BodyPivot/PlayerArrow.visible = true
-	$Effects.play('arrow')
-	var timer = Timer.new()
-	timer.wait_time = 5
-	add_child(timer)
-	timer.start()
-	timer.connect("timeout", self, "end_arrow")
-	original_gravity = GRAVITY
-	$BodyPivot/BodyParameter.scale.x *= -1
 	self.add_to_group("player")
+	set_arrow()
 
 func _physics_process(delta) -> void:
 	# Applies gravity and friction
@@ -54,6 +45,17 @@ func _physics_process(delta) -> void:
 
 	motion = Vector2(round(motion.x), round(motion.y))
 	motion = move_and_slide(motion, UP)
+
+func set_arrow():
+	$BodyPivot/PlayerArrow.visible = true
+	$Effects.play('arrow')
+	var timer = Timer.new()
+	timer.wait_time = 5
+	add_child(timer)
+	timer.start()
+	timer.connect("timeout", self, "end_arrow")
+	original_gravity = GRAVITY
+	$BodyPivot/BodyParameter.scale.x *= -1
 
 func end_arrow():
 	$BodyPivot/PlayerArrow.visible = false

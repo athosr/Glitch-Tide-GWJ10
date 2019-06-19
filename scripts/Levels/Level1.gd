@@ -1,15 +1,16 @@
 extends Node2D
 
-var player = load("res://scenes/Player/Player.tscn") as PackedScene
-var fade = load("res://scenes/Interface/Fade.tscn") as PackedScene
-var dialog = load("res://scenes/Interface/DialogBox.tscn") as PackedScene
+var player = preload("res://player/Player.tscn")
+var fade = preload("res://scenes/Interface/Fade.tscn")
+var dialog = preload("res://scenes/Interface/DialogBox.tscn")
 
 var d
 
 func _ready():
+	$AudioHandler/Ambient.play()
 	d = dialog.instance()
 	if PlayerVariables.deaths == 0:
-		d.dialog = ['What the fuck is happening here?', "This doesn't makes any sense at all", 'Well, maybe just a little bit']
+		d.dialog = ['              What the fuck is happening here?', "          This doesn't makes any sense at all", '           Well, maybe just a little bit']
 	else:
 		d.dialog = ["Well, this isn't too obvious...", "          Try Again"]
 	$CanvasLayer.add_child(d)

@@ -1,0 +1,136 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/player/body.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/player/head.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/player/open_eye.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player/arm.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/player/hand.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/misc/player_arrow.png" type="Texture" id=7]
+[ext_resource path="res://player/PlayerStateMachine.gd" type="Script" id=8]
+[ext_resource path="res://player/states/Idle.gd" type="Script" id=9]
+[ext_resource path="res://player/states/Move.gd" type="Script" id=10]
+[ext_resource path="res://player/states/Jump.gd" type="Script" id=11]
+[ext_resource path="res://player/states/Fall.gd" type="Script" id=12]
+[ext_resource path="res://player/states/Diving.gd" type="Script" id=13]
+[ext_resource path="res://animations/player/diving.tres" type="Animation" id=14]
+[ext_resource path="res://animations/player/fall.tres" type="Animation" id=15]
+[ext_resource path="res://animations/player/idle.tres" type="Animation" id=16]
+[ext_resource path="res://animations/player/jump.tres" type="Animation" id=17]
+[ext_resource path="res://animations/player/move.tres" type="Animation" id=18]
+[ext_resource path="res://animations/player/effects/arrow.tres" type="Animation" id=19]
+[ext_resource path="res://assets/audio/wavs/jump.wav" type="AudioStream" id=20]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 27.6013
+height = 64.0407
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+GRAVITY = 50.0
+JUMP_HEIGHT = -1700.0
+ACCELERATION = 100.0
+MAX_SPEED = 1000.0
+FLOOR_LERP = 0.1
+AIR_LERP = 0.1
+MAX_JUMPS = 1
+
+[node name="BodyPivot" type="Position2D" parent="."]
+editor/display_folded = true
+
+[node name="BodyParameter" type="Sprite" parent="BodyPivot"]
+scale = Vector2( 0.15, 0.15 )
+
+[node name="body" type="Sprite" parent="BodyPivot/BodyParameter"]
+position = Vector2( 89.3385, 197.563 )
+rotation = -0.263807
+texture = ExtResource( 2 )
+offset = Vector2( -14.1036, -218.751 )
+
+[node name="head" type="Sprite" parent="BodyPivot/BodyParameter/body"]
+position = Vector2( -0.611694, -674.506 )
+rotation = 0.544258
+texture = ExtResource( 3 )
+
+[node name="eye" type="Sprite" parent="BodyPivot/BodyParameter/body/head"]
+position = Vector2( -208.793, 13.6733 )
+texture = ExtResource( 4 )
+
+[node name="arm" type="Sprite" parent="BodyPivot/BodyParameter/body"]
+position = Vector2( -75.2335, -340.789 )
+rotation = 4.35869
+texture = ExtResource( 5 )
+offset = Vector2( -105.914, -70.1379 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hand" type="Sprite" parent="BodyPivot/BodyParameter/body/arm"]
+position = Vector2( -186.602, -118.46 )
+texture = ExtResource( 6 )
+offset = Vector2( -15.441, -20.3849 )
+
+[node name="arm2" type="Sprite" parent="BodyPivot/BodyParameter/body"]
+position = Vector2( -14.3754, -350.65 )
+rotation = 4.27835
+scale = Vector2( 1, -1 )
+texture = ExtResource( 5 )
+offset = Vector2( -99.8656, -59.9532 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hand" type="Sprite" parent="BodyPivot/BodyParameter/body/arm2"]
+position = Vector2( -171.192, -104.947 )
+rotation = 0.168755
+texture = ExtResource( 6 )
+offset = Vector2( -24.1829, -13.8987 )
+
+[node name="PlayerArrow" type="Sprite" parent="BodyPivot"]
+position = Vector2( -27.9751, -154.509 )
+scale = Vector2( -0.000146665, 0.12 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -25 )
+shape = SubResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 8 )
+START_STATE = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="StateMachine/Fall"]
+wait_time = 0.2
+
+[node name="Diving" type="Node" parent="StateMachine"]
+script = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/diving = ExtResource( 14 )
+anims/fall = ExtResource( 15 )
+anims/idle = ExtResource( 16 )
+anims/jump = ExtResource( 17 )
+anims/move = ExtResource( 18 )
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+anims/arrow = ExtResource( 19 )
+
+[node name="AudioHandler" type="Node2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="AudioHandler"]
+stream = ExtResource( 20 )
+volume_db = -10.0
+[connection signal="timeout" from="StateMachine/Fall/Timer" to="StateMachine/Fall" method="_on_Timer_timeout"]

@@ -1,0 +1,78 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "diving"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/BodyParameter/body/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 68.1977, 59.9999, 74.9999 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/BodyParameter/body:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -169.954, -165.0, -180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/BodyParameter/body/arm:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.9, 1.3, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 255.0, 264.96, 270.0, 255.0, 264.96 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyPivot/BodyParameter/body/arm2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.9, 1.3, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 240.0, 252.695, 255.0, 240.0, 252.695 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyPivot/BodyParameter/body/arm/hand:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0, -44.9999 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyPivot/BodyParameter/body/arm2/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, 89.9999 ]
+}

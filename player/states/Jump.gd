@@ -13,6 +13,7 @@ func enter() -> void:
 	update_animation()
 	if owner.is_on_floor():
 		apply_jump_force()
+		owner.get_node('AudioHandler/Jump').play()
 	return
 
 func handle_input(event : InputEvent) -> void:
