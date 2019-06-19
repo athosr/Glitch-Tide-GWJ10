@@ -129,8 +129,11 @@ anims/move = ExtResource( 18 )
 anims/arrow = ExtResource( 19 )
 
 [node name="AudioHandler" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="AudioHandler"]
 stream = ExtResource( 20 )
 volume_db = -10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 [connection signal="timeout" from="StateMachine/Fall/Timer" to="StateMachine/Fall" method="_on_Timer_timeout"]

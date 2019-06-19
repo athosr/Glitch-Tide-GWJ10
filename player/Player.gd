@@ -8,6 +8,9 @@ export var FLOOR_LERP : float
 export var AIR_LERP : float
 export var MAX_JUMPS : int
 
+var options = preload('res://scenes/Interface/Options.tscn')
+var options_open : bool = false
+
 var original_gravity : float
 
 var motion : Vector2

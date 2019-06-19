@@ -1,5 +1,7 @@
 extends Control
 
+var first_time : bool = true
+
 var dialog = preload("res://scenes/Interface/DialogBox.tscn")
 var fade = preload("res://scenes/Interface/Fade.tscn")
 
@@ -10,13 +12,15 @@ var d3 = dialog.instance()
 var t = Timer.new()
 
 func _ready():
-	$CreditsScreen/AnimationPlayer.play('credits')
-	t.wait_time = 1
-	add_child(t)
-	t.start()
-	t.connect('timeout', self, 'start_tutorial')
+	if first_time:
+		$CreditsScreen/AnimationPlayer.play('credits')
+		t.wait_time = 1
+		add_child(t)
+		t.start()
+		t.connect('timeout', self, 'start_tutorial')
 
 func _on_Button_pressed():
+	first_time = false
 	return get_tree().change_scene("res://scenes/Levels/Level1.tscn")
 
 func start_tutorial():
@@ -61,7 +65,6 @@ func dialog3_finished():
 	f.in_mode = false
 	add_child(f) 
 	yield(f, "finished")
-
 
 
 func _on_Credits_button_down():

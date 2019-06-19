@@ -20,3 +20,4 @@ func _on_AnimatedSprite_animation_finished():
 	$AnimatedSprite.play('pt2')
 	finished = true
 	$Label.visible = true
+	$Node2D/Pt2.play()

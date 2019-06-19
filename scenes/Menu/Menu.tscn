@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://shaders/fog.shader" type="Shader" id=7]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=9]
+[ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -94,8 +95,8 @@ tracks/2/keys = {
 }
 
 [node name="Menu" type="Control"]
-margin_top = -1.0
-margin_bottom = -1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -120,12 +121,21 @@ margin_bottom = 84.0
 custom_fonts/font = ExtResource( 3 )
 text = "Play"
 
-[node name="Credits" type="Button" parent="."]
+[node name="LevelSelect" type="Button" parent="."]
 self_modulate = Color( 0.521569, 0, 1, 1 )
 margin_left = 70.0
 margin_top = 98.0
 margin_right = 188.0
 margin_bottom = 134.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level Select"
+
+[node name="Credits" type="Button" parent="."]
+self_modulate = Color( 0.521569, 0, 1, 1 )
+margin_left = 70.0
+margin_top = 148.0
+margin_right = 188.0
+margin_bottom = 184.0
 custom_fonts/font = ExtResource( 3 )
 text = "Credits"
 
@@ -136,7 +146,6 @@ position = Vector2( 380, 230 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Controls"]
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Jump" type="Label" parent="Controls"]
@@ -274,7 +283,16 @@ text = "Everything: Athos Rodrigues"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CreditsScreen"]
 anims/credits = SubResource( 12 )
+
+[node name="AudioHandler" type="Node2D" parent="."]
+
+[node name="Pt1" type="AudioStreamPlayer2D" parent="AudioHandler"]
+stream = ExtResource( 10 )
+volume_db = -20.0
+autoplay = true
 [connection signal="pressed" from="Play" to="." method="_on_Button_pressed"]
+[connection signal="button_down" from="LevelSelect" to="." method="_on_Credits_button_down"]
+[connection signal="button_up" from="LevelSelect" to="." method="_on_Credits_button_up"]
 [connection signal="button_down" from="Credits" to="." method="_on_Credits_button_down"]
 [connection signal="button_up" from="Credits" to="." method="_on_Credits_button_up"]
 [connection signal="body_entered" from="EventTrigger/Tutorial" to="." method="_on_Tutorial_body_entered"]
