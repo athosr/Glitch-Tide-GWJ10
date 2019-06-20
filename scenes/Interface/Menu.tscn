@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=9]
 [ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=10]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -19,34 +19,34 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 6 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 869.6, 10 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 139.032, 10 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 289.854, 46.1781 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 509.385, 46.1781 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 582.905, 46.1781 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 7 )
 shader_param/OCTAVES = 6
 shader_param/color = Vector3( 0.33, 0.15, 0.82 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 280.681, 256.527 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 863.219, 211.066 )
 
 [sub_resource type="DynamicFont" id=11]
@@ -145,7 +145,7 @@ visible = false
 position = Vector2( 380, 230 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Controls"]
-frames = SubResource( 4 )
+frames = SubResource( 1 )
 playing = true
 
 [node name="Jump" type="Label" parent="Controls"]
@@ -161,7 +161,7 @@ margin_left = -71.0
 margin_top = -74.0
 margin_right = 85.0
 margin_bottom = -31.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "(hold it to get higher)"
 
 [node name="MoveLeft" type="Label" parent="Controls"]
@@ -194,30 +194,30 @@ position = Vector2( 110, 50 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
 position = Vector2( 761, 458 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Player"]
 position = Vector2( 681, 338 )
-shape = SubResource( 10 )
+shape = SubResource( 4 )
 one_way_collision = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Player"]
 position = Vector2( 510, 299 )
 rotation = 1.57079
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Player"]
 position = Vector2( 848, 299 )
 rotation = 1.57079
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Player"]
 position = Vector2( 423.623, -185.433 )
 rotation = 3.14159
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="black_background" type="Sprite" parent="Player"]
-material = SubResource( 3 )
+material = SubResource( 8 )
 position = Vector2( 678.512, 230.644 )
 scale = Vector2( 0.330599, 0.729304 )
 texture = ExtResource( 2 )
@@ -246,14 +246,14 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger/Tutorial"]
 position = Vector2( 293.159, 256.843 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="End" type="Area2D" parent="EventTrigger"]
 editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger/End"]
 position = Vector2( -866.345, 727.443 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="CreditsScreen" type="Node2D" parent="."]
 editor/display_folded = true

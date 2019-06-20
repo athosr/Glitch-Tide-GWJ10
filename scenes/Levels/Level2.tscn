@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Levels/Level2.gd" type="Script" id=1]
 [ext_resource path="res://shaders/glitch2.shader" type="Shader" id=2]
@@ -37,33 +37,36 @@ extents = Vector2( 643.978, 117.033 )
 extents = Vector2( 1349.64, 117.033 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 1276.55, 117.033 )
+extents = Vector2( 1013.17, 1031.66 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 1075.64, 8.00293 )
+extents = Vector2( 1276.55, 117.033 )
 
 [sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 1075.64, 8.00293 )
+
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 151.593, 8.00293 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 126.801, 29.7564 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 293.818, 246.63 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 2286.01, 679.007 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 1299.91, 526.896 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 1046.42, 646.66 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 2312.94, 1156.93 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("GlitchCreature:position")
@@ -102,7 +105,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=19]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("GlitchCreature:position")
@@ -141,8 +144,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
-resource_name = "creature_patrol2"
+[sub_resource type="Animation" id=20]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("GlitchCreature:position")
@@ -218,7 +220,6 @@ scale = Vector2( 4.62043, 3.91801 )
 texture = ExtResource( 5 )
 
 [node name="WorldBorders" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Walls" type="StaticBody2D" parent="WorldBorders"]
 editor/display_folded = true
@@ -251,7 +252,6 @@ rotation = 1.57079
 shape = SubResource( 3 )
 
 [node name="teleport_left" type="Area2D" parent="WorldBorders"]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/teleport_left"]
 position = Vector2( 2628.1, 1868.76 )
@@ -261,6 +261,11 @@ shape = SubResource( 6 )
 position = Vector2( 1912.53, 687.895 )
 rotation = 1.57079
 shape = SubResource( 7 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders/teleport_left"]
+position = Vector2( 2231.65, 3056.26 )
+rotation = 1.57079
+shape = SubResource( 8 )
 
 [node name="teleport_right" type="Area2D" parent="WorldBorders"]
 editor/display_folded = true
@@ -272,10 +277,10 @@ shape = SubResource( 6 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders/teleport_right"]
 position = Vector2( 6768.69, 653.505 )
 rotation = -1.57079
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="t_player_left" type="Position2D" parent="WorldBorders"]
-position = Vector2( 3388.98, 1930.5 )
+position = Vector2( 3388.98, 2020.5 )
 
 [node name="t_player_right" type="Position2D" parent="WorldBorders"]
 position = Vector2( 5278.98, 1930.5 )
@@ -292,7 +297,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidInvisible"]
 position = Vector2( 0, 10 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="SolidInvisible2" type="StaticBody2D" parent="Platforms"]
 editor/display_folded = true
@@ -303,7 +308,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidInvisible2"]
 position = Vector2( 0, 10 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible" type="StaticBody2D" parent="Platforms"]
@@ -320,7 +325,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible2" type="StaticBody2D" parent="Platforms"]
@@ -337,7 +342,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible2"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible3" type="StaticBody2D" parent="Platforms"]
@@ -354,7 +359,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible3"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible4" type="StaticBody2D" parent="Platforms"]
@@ -371,7 +376,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible4"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible5" type="StaticBody2D" parent="Platforms"]
@@ -388,7 +393,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible5"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible6" type="StaticBody2D" parent="Platforms"]
@@ -405,7 +410,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible6"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible7" type="StaticBody2D" parent="Platforms"]
@@ -422,7 +427,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible7"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible8" type="StaticBody2D" parent="Platforms"]
@@ -439,7 +444,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible8"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible9" type="StaticBody2D" parent="Platforms"]
@@ -456,7 +461,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible9"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible11" type="StaticBody2D" parent="Platforms"]
@@ -473,7 +478,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible11"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible12" type="StaticBody2D" parent="Platforms"]
@@ -490,7 +495,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible12"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible13" type="StaticBody2D" parent="Platforms"]
@@ -507,7 +512,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible13"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="SolidVisible14" type="StaticBody2D" parent="Platforms"]
@@ -524,7 +529,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/SolidVisible14"]
 position = Vector2( 0, 30 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="Void" type="Sprite" parent="Platforms"]
@@ -597,7 +602,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/LightsOn"]
 self_modulate = Color( 0, 0.0862745, 1, 1 )
 position = Vector2( 20, -110 )
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 
 [node name="Area2Position" type="Position2D" parent="EventTriggers"]
 position = Vector2( 4321.19, 1485.27 )
@@ -610,7 +615,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/FastSong"]
 position = Vector2( 40, -130 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="WrongPath" type="Area2D" parent="EventTriggers"]
 editor/display_folded = true
@@ -618,7 +623,7 @@ editor/display_folded = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/WrongPath"]
 self_modulate = Color( 0.823529, 0, 0.996078, 1 )
 position = Vector2( 5465.04, 1218.67 )
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="Camera1" type="Area2D" parent="."]
 editor/display_folded = true
@@ -635,7 +640,7 @@ zoom = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera1"]
 position = Vector2( 4324.7, 2536.22 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="Camera2" type="Area2D" parent="."]
 editor/display_folded = true
@@ -652,7 +657,7 @@ zoom = Vector2( 4.5, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2"]
 position = Vector2( 4330.13, 652.909 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="GlitchCreature" parent="." instance=ExtResource( 7 )]
 position = Vector2( 7679.06, -359.309 )
@@ -660,9 +665,9 @@ rotation = -0.404487
 scale = Vector2( -0.567997, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/creature_attack = SubResource( 16 )
-anims/creature_patrol = SubResource( 17 )
-anims/creature_patrol2 = SubResource( 19 )
+anims/creature_attack = SubResource( 18 )
+anims/creature_patrol = SubResource( 19 )
+anims/creature_patrol2 = SubResource( 20 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 

@@ -10,7 +10,7 @@ func _unhandled_input(event):
 	f.in_mode = true
 	add_child(f)
 	yield(f, "finished")
-	return get_tree().change_scene("res://scenes/Menu/Menu.tscn")
+	return get_tree().change_scene("res://scenes/Interface/Menu.tscn")
 
 func _ready():
 	$AnimationPlayer.play("light")
