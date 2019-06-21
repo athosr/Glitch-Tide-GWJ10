@@ -24,11 +24,14 @@ func _on_Button_pressed():
 	return get_tree().change_scene("res://scenes/Levels/Level1.tscn")
 
 func start_tutorial():
-	t.queue_free()
-	d.dialog = ["                Press spacebar to continue", "                           Hey!", "              You're welcome!", "What about to get used to the controls before the actual game?"]
-	add_child(d)
-	$Controls.visible = true
-	d.connect("finished", self, 'dialog_finished')
+	if not PlayerVariables.init:
+		t.queue_free()
+		d.dialog = ["                Press spacebar to continue", "                           Hey!", "              You're welcome!", "What about to get used to the controls before the actual game?"]
+		add_child(d)
+		$Controls.visible = true
+		PlayerVariables.init = true
+		d.connect("finished", self, 'dialog_finished')
+
 func dialog_finished():
 	d.queue_free()
 	var f = fade.instance()
@@ -66,8 +69,19 @@ func dialog3_finished():
 	add_child(f) 
 	yield(f, "finished")
 
-
 func _on_Credits_button_down():
 	$CreditsScreen.visible = true
 func _on_Credits_button_up():
 	$CreditsScreen.visible = false
+
+func _on_LevelSelect_pressed():
+	return get_tree().change_scene("res://scenes/Interface/LevelSelect.tscn")
+
+func _on_Control_pressed():
+	if $Controls.visible:
+		$Controls.visible = false
+	else:
+		$Controls.visible = true
+
+func _on_Exit_pressed():
+	get_tree().quit()

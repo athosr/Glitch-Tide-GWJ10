@@ -1,7 +1,7 @@
 extends Node
 
 var deaths : int = 0
-
+var init : bool = false
 var current_scene = null
 
 func _process(delta):

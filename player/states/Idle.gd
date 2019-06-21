@@ -1,7 +1,7 @@
 extends MotionState
 
 # Initialize the state. E.g. change the animation
-func enter() -> void:	
+func enter() -> void:
 	return
 
 

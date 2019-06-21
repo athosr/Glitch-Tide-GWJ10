@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GWJ10"
-run/main_scene="res://scenes/Interface/Opening.tscn"
+run/main_scene="res://scenes/Levels/Level3.tscn"
 boot_splash/image="res://assets/sprites/UI/Godot Logo/wallpaper.png"
 config/icon="res://icon.png"
 

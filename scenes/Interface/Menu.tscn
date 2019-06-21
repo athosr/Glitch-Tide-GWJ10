@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://assets/sprites/UI/Menu/arrow.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/UI/Menu/wasd.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/DK-Lemon-Yellow-Sun.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://shaders/fog.shader" type="Shader" id=7]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=9]
-[ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sprites/UI/Menu/esc.png" type="Texture" id=7]
+[ext_resource path="res://shaders/fog.shader" type="Shader" id=8]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=10]
+[ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -39,7 +40,7 @@ extents = Vector2( 509.385, 46.1781 )
 extents = Vector2( 582.905, 46.1781 )
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 7 )
+shader = ExtResource( 8 )
 shader_param/OCTAVES = 6
 shader_param/color = Vector3( 0.33, 0.15, 0.82 )
 
@@ -130,25 +131,43 @@ margin_bottom = 134.0
 custom_fonts/font = ExtResource( 3 )
 text = "Level Select"
 
-[node name="Credits" type="Button" parent="."]
+[node name="Control" type="Button" parent="."]
 self_modulate = Color( 0.521569, 0, 1, 1 )
 margin_left = 70.0
 margin_top = 148.0
 margin_right = 188.0
 margin_bottom = 184.0
 custom_fonts/font = ExtResource( 3 )
+text = "Controls"
+
+[node name="Credits" type="Button" parent="."]
+self_modulate = Color( 0.521569, 0, 1, 1 )
+margin_left = 70.0
+margin_top = 198.0
+margin_right = 188.0
+margin_bottom = 234.0
+custom_fonts/font = ExtResource( 3 )
 text = "Credits"
 
+[node name="Exit" type="Button" parent="."]
+self_modulate = Color( 0.521569, 0, 1, 1 )
+margin_left = 70.0
+margin_top = 248.0
+margin_right = 188.0
+margin_bottom = 284.0
+custom_fonts/font = ExtResource( 3 )
+text = "exit"
+
 [node name="Controls" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 380, 230 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Controls"]
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
-[node name="Jump" type="Label" parent="Controls"]
+[node name="Jump" type="Label" parent="Controls/AnimatedSprite"]
 margin_left = -29.0
 margin_top = -100.0
 margin_right = 48.0
@@ -156,7 +175,7 @@ margin_bottom = -57.0
 custom_fonts/font = ExtResource( 3 )
 text = "Jump"
 
-[node name="Jump2" type="Label" parent="Controls"]
+[node name="Jump2" type="Label" parent="Controls/AnimatedSprite"]
 margin_left = -71.0
 margin_top = -74.0
 margin_right = 85.0
@@ -164,7 +183,7 @@ margin_bottom = -31.0
 custom_fonts/font = SubResource( 2 )
 text = "(hold it to get higher)"
 
-[node name="MoveLeft" type="Label" parent="Controls"]
+[node name="MoveLeft" type="Label" parent="Controls/AnimatedSprite"]
 margin_left = -190.0
 margin_top = 10.0
 margin_right = -89.0
@@ -172,15 +191,15 @@ margin_bottom = 53.0
 custom_fonts/font = ExtResource( 3 )
 text = "Move left"
 
-[node name="MoveRight" type="Label" parent="Controls"]
+[node name="MoveRight" type="Label" parent="Controls/AnimatedSprite"]
 margin_left = 90.0
 margin_top = 10.0
-margin_right = 191.0
+margin_right = 201.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 3 )
 text = "Move right"
 
-[node name="DownPlatform" type="Label" parent="Controls"]
+[node name="DownPlatform" type="Label" parent="Controls/AnimatedSprite"]
 margin_left = -80.0
 margin_top = 60.0
 margin_right = 77.0
@@ -188,8 +207,19 @@ margin_bottom = 103.0
 custom_fonts/font = ExtResource( 3 )
 text = "Down Platform"
 
+[node name="esc" type="Sprite" parent="Controls"]
+position = Vector2( -1.89423, 144.79 )
+texture = ExtResource( 7 )
+
+[node name="DownPlatform2" type="Label" parent="Controls/esc"]
+margin_left = -39.1058
+margin_top = 31.2101
+margin_right = 117.894
+margin_bottom = 74.2101
+custom_fonts/font = ExtResource( 3 )
+text = "Options"
+
 [node name="Player" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 110, 50 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
@@ -234,7 +264,7 @@ margin_bottom = 357.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
 
-[node name="Player" parent="Player" instance=ExtResource( 8 )]
+[node name="Player" parent="Player" instance=ExtResource( 9 )]
 position = Vector2( 670, 270 )
 
 [node name="EventTrigger" type="Node2D" parent="."]
@@ -265,7 +295,7 @@ polygon = PoolVector2Array( 1061.05, -0.97673, 1030.09, 602.182, -16.232, 603.23
 [node name="Light2D" type="Light2D" parent="CreditsScreen"]
 position = Vector2( 510, 310 )
 rotation = 6.03186
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 texture_scale = 0.904571
 energy = 1.46
 
@@ -287,13 +317,13 @@ anims/credits = SubResource( 12 )
 [node name="AudioHandler" type="Node2D" parent="."]
 
 [node name="Pt1" type="AudioStreamPlayer2D" parent="AudioHandler"]
-stream = ExtResource( 10 )
-volume_db = -20.0
+stream = ExtResource( 11 )
 autoplay = true
 [connection signal="pressed" from="Play" to="." method="_on_Button_pressed"]
-[connection signal="button_down" from="LevelSelect" to="." method="_on_Credits_button_down"]
-[connection signal="button_up" from="LevelSelect" to="." method="_on_Credits_button_up"]
+[connection signal="pressed" from="LevelSelect" to="." method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="Control" to="." method="_on_Control_pressed"]
 [connection signal="button_down" from="Credits" to="." method="_on_Credits_button_down"]
 [connection signal="button_up" from="Credits" to="." method="_on_Credits_button_up"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
 [connection signal="body_entered" from="EventTrigger/Tutorial" to="." method="_on_Tutorial_body_entered"]
 [connection signal="body_entered" from="EventTrigger/End" to="." method="_on_End_body_entered"]

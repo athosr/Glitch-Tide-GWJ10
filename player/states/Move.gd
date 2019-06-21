@@ -12,6 +12,11 @@ func handle_input(event : InputEvent) -> void:
 
 
 func update(delta : float) -> void:
+	if not owner.is_on_floor():
+		if PlayerVariables.current_scene != null:
+			if PlayerVariables.current_scene.name == 'Level3':
+				emit_signal('finished', 'diving')
+
 	var input_direction : Vector2 = get_input_direction()
 	update_look_direction(input_direction)
 	owner.friction = true

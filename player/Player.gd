@@ -8,7 +8,6 @@ export var FLOOR_LERP : float
 export var AIR_LERP : float
 export var MAX_JUMPS : int
 
-var options = preload('res://scenes/Interface/Options.tscn')
 var options_open : bool = false
 
 var original_gravity : float
@@ -30,6 +29,9 @@ func _physics_process(delta) -> void:
 	# Applies gravity and friction
 	motion.y += GRAVITY
 
+	if Input.is_action_just_pressed('escape'):
+		options_menu()
+
 	# Applies resistence
 	if is_on_floor():
 		if friction == true:
@@ -49,6 +51,14 @@ func _physics_process(delta) -> void:
 	motion = Vector2(round(motion.x), round(motion.y))
 	motion = move_and_slide(motion, UP)
 
+func options_menu():
+	if options_open:
+		$CanvasLayer/Options.visible = false
+		options_open = false
+	else:
+		$CanvasLayer/Options.visible = true
+		options_open = true
+
 func set_arrow():
 	$BodyPivot/PlayerArrow.visible = true
 	$Effects.play('arrow')
@@ -60,6 +70,13 @@ func set_arrow():
 	original_gravity = GRAVITY
 	$BodyPivot/BodyParameter.scale.x *= -1
 
+func _on_Menu_pressed():
+	get_tree().change_scene("res://scenes/Interface/Menu.tscn")
+func _on_Exit_pressed():
+	get_tree().quit()
+
+
 func end_arrow():
 	$BodyPivot/PlayerArrow.visible = false
 	$Effects.stop()
+

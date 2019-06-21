@@ -1,198 +1,201 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://shaders/wind.shader" type="Shader" id=1]
-[ext_resource path="res://assets/sprites/misc/glitch_background.png" type="Texture" id=2]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Levels/Level3.gd" type="Script" id=1]
+[ext_resource path="res://shaders/wind.shader" type="Shader" id=2]
+[ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Creatures/GlitchCreature.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
+shader = ExtResource( 2 )
 shader_param/OCTAVES = 6
 shader_param/color = Vector3( 1, 0.5, 0.9 )
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 1 )
-shader_param/OCTAVES = 6
-shader_param/color = Vector3( 1, 0.5, 0.9 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 253.252, 10 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 1905.59, 10 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 408.651, 25.9673 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 394.648, 25.9673 )
+extents = Vector2( 138.825, 1266.27 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 503.329, 97.7491 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 155.776, 25.9673 )
+extents = Vector2( 24.1436, 339.633 )
 
-[node name="Level2" type="Node2D"]
+[sub_resource type="Animation" id=2]
+resource_name = "creature_flying"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlitchCreature:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2420.6, 1332.9 ), Vector2( 20000, 1332.9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GlitchCreature:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GlitchCreature:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Camera"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 6, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48.1375, -62.7548 ), Vector2( 978.137, -452.755 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/Camera2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "weather"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Level3" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 3741.66, 2899.05 )
-current = true
-zoom = Vector2( 5, 5 )
-
-[node name="background" type="Sprite" parent="Camera2D"]
+[node name="background" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 6.2959, -3.39709 )
-scale = Vector2( 5.00384, 5.06062 )
-z_index = -1
-texture = ExtResource( 2 )
+position = Vector2( 76871.6, 1024.36 )
+scale = Vector2( 150.02, 20 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Platforms" type="Node2D" parent="Camera2D"]
-position = Vector2( -1768.48, -1614.59 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D/Platforms"]
-position = Vector2( -313.512, 2745.78 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D"]
-material = SubResource( 2 )
-position = Vector2( -3.96619, 80.3638 )
-scale = Vector2( 0.5, 0.966536 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D"]
-position = Vector2( -5.54254, -189.619 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D/Platforms"]
+[node name="Obstacles" type="Node2D" parent="."]
 editor/display_folded = true
-position = Vector2( 510.075, 2476.62 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D2"]
-material = SubResource( 2 )
-position = Vector2( 10.8185, 81.4141 )
-scale = Vector2( 0.5, 1.87475 )
-texture = ExtResource( 2 )
+[node name="StaticBody2D" type="StaticBody2D" parent="Obstacles"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D2"]
-position = Vector2( 9.24219, -466.104 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Camera2D/Platforms"]
-editor/display_folded = true
-position = Vector2( 1307.62, 2710.13 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D3"]
-material = SubResource( 2 )
-position = Vector2( 40.3876, -2.25781 )
-scale = Vector2( 0.5, 1.36515 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D3"]
-position = Vector2( 38.8113, -392.657 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Camera2D/Platforms"]
-editor/display_folded = true
-position = Vector2( 2254.25, 2519.66 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D4"]
-material = SubResource( 2 )
-position = Vector2( 3.42627, 79.1709 )
-scale = Vector2( 0.5, 1.73438 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D4"]
-position = Vector2( 1.8501, -420.458 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Camera2D/Platforms"]
-editor/display_folded = true
-position = Vector2( 1825.84, 1286.07 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D5"]
-material = SubResource( 2 )
-position = Vector2( 4.80334, 61.8906 )
-scale = Vector2( 3.73415, 0.33022 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D5"]
-position = Vector2( -3.07983, 6.51074 )
-shape = SubResource( 4 )
-one_way_collision = true
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="Camera2D/Platforms"]
-editor/display_folded = true
-position = Vector2( 3196.08, 2094.63 )
-rotation = -0.523598
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D6"]
-material = SubResource( 2 )
-position = Vector2( -31.1025, 38.2954 )
-scale = Vector2( 0.789407, 0.33022 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D6"]
-position = Vector2( -33.1973, -16.375 )
-shape = SubResource( 5 )
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="Camera2D/Platforms"]
-editor/display_folded = true
-position = Vector2( 3871.96, 1886.91 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D7"]
-material = SubResource( 2 )
-position = Vector2( 17.1912, 66.8799 )
-scale = Vector2( 0.789407, 0.33022 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D7"]
-position = Vector2( 8.03052, 7.75635 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D"]
+position = Vector2( 3077.83, -3192.17 )
 shape = SubResource( 6 )
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="Camera2D/Platforms"]
+[node name="GlitchCreature" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-position = Vector2( 4121.96, 1716.91 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 2420.6, 1332.9 )
 
-[node name="Sprite" type="Sprite" parent="Camera2D/Platforms/StaticBody2D8"]
-material = SubResource( 2 )
-position = Vector2( 20.1328, 36.8799 )
-scale = Vector2( 0.314911, 0.33022 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" parent="GlitchCreature" index="0"]
+position = Vector2( 260, 0 )
+frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platforms/StaticBody2D8"]
-position = Vector2( 18.0305, -22.2437 )
+[node name="CollisionShape2D" parent="GlitchCreature" index="1"]
+position = Vector2( 230, 180 )
+
+[node name="RideCreature" type="Area2D" parent="GlitchCreature"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchCreature/RideCreature"]
+position = Vector2( 260, -20 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GlitchCreature"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchCreature/StaticBody2D"]
+position = Vector2( -160, 0 )
 shape = SubResource( 7 )
-one_way_collision = true
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1687.21, 3562.23 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GlitchCreature/StaticBody2D"]
+position = Vector2( 730, 0 )
+shape = SubResource( 7 )
+
+[node name="Creature" type="AnimationPlayer" parent="."]
+anims/creature_flying = SubResource( 2 )
+
+[node name="CameraEffects" type="AnimationPlayer" parent="."]
+anims/Camera = SubResource( 4 )
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+anims/weather = SubResource( 5 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.333333, 0.333333, 0.333333, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2905.94, -4276.82 )
+
+[node name="StateMachine" parent="Player" index="2"]
+START_STATE = NodePath("Diving")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 48.1375, -62.7548 )
+current = true
+zoom = Vector2( 2, 2 )
+[connection signal="body_entered" from="GlitchCreature/RideCreature" to="." method="_on_RideCreature_body_entered"]
+[connection signal="body_exited" from="GlitchCreature/RideCreature" to="." method="_on_RideCreature_body_exited"]
+
+[editable path="GlitchCreature"]
+
+[editable path="Player"]

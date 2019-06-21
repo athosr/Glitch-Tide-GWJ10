@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player/body.png" type="Texture" id=2]
@@ -20,10 +20,11 @@
 [ext_resource path="res://animations/player/move.tres" type="Animation" id=18]
 [ext_resource path="res://animations/player/effects/arrow.tres" type="Animation" id=19]
 [ext_resource path="res://assets/audio/wavs/jump.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=21]
+[ext_resource path="res://assets/fonts/LYS_Font.tres" type="DynamicFont" id=22]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 27.6013
-height = 64.0407
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.9839, 59.2123 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -43,13 +44,13 @@ scale = Vector2( 0.15, 0.15 )
 
 [node name="body" type="Sprite" parent="BodyPivot/BodyParameter"]
 position = Vector2( 89.3385, 197.563 )
-rotation = -0.263807
+rotation = -0.227476
 texture = ExtResource( 2 )
 offset = Vector2( -14.1036, -218.751 )
 
 [node name="head" type="Sprite" parent="BodyPivot/BodyParameter/body"]
 position = Vector2( -0.611694, -674.506 )
-rotation = 0.544258
+rotation = 1.00198
 texture = ExtResource( 3 )
 
 [node name="eye" type="Sprite" parent="BodyPivot/BodyParameter/body/head"]
@@ -58,7 +59,7 @@ texture = ExtResource( 4 )
 
 [node name="arm" type="Sprite" parent="BodyPivot/BodyParameter/body"]
 position = Vector2( -75.2335, -340.789 )
-rotation = 4.35869
+rotation = 4.45059
 texture = ExtResource( 5 )
 offset = Vector2( -105.914, -70.1379 )
 __meta__ = {
@@ -72,7 +73,7 @@ offset = Vector2( -15.441, -20.3849 )
 
 [node name="arm2" type="Sprite" parent="BodyPivot/BodyParameter/body"]
 position = Vector2( -14.3754, -350.65 )
-rotation = 4.27835
+rotation = 4.55449
 scale = Vector2( 1, -1 )
 texture = ExtResource( 5 )
 offset = Vector2( -99.8656, -59.9532 )
@@ -82,7 +83,7 @@ __meta__ = {
 
 [node name="hand" type="Sprite" parent="BodyPivot/BodyParameter/body/arm2"]
 position = Vector2( -171.192, -104.947 )
-rotation = 0.168755
+rotation = 0.523599
 texture = ExtResource( 6 )
 offset = Vector2( -24.1829, -13.8987 )
 
@@ -92,7 +93,6 @@ scale = Vector2( -0.000146665, 0.12 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -25 )
 shape = SubResource( 1 )
 
@@ -129,11 +129,59 @@ anims/move = ExtResource( 18 )
 anims/arrow = ExtResource( 19 )
 
 [node name="AudioHandler" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="AudioHandler"]
 stream = ExtResource( 20 )
-volume_db = -10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" type="Node2D" parent="CanvasLayer"]
+visible = false
+z_index = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+
+[node name="Menu" type="Button" parent="CanvasLayer/Options/TextureRect"]
+modulate = Color( 0.639216, 0, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = -66.0
+margin_right = 61.0
+margin_bottom = -14.0
+custom_fonts/font = ExtResource( 22 )
+text = "Menu"
+
+[node name="Exit" type="Button" parent="CanvasLayer/Options/TextureRect"]
+modulate = Color( 0.639216, 0, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = -6.0
+margin_right = 61.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 22 )
+text = "Exit"
+
+[node name="Label" type="Label" parent="CanvasLayer/Options/TextureRect"]
+modulate = Color( 1, 1, 1, 0.447059 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.0
+margin_top = -97.0
+margin_right = 129.0
+margin_bottom = -71.0
+custom_fonts/font = ExtResource( 22 )
+text = "the game is not paused"
 [connection signal="timeout" from="StateMachine/Fall/Timer" to="StateMachine/Fall" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Options/TextureRect/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/TextureRect/Exit" to="." method="_on_Exit_pressed"]

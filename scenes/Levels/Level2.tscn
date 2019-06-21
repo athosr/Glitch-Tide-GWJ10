@@ -187,7 +187,6 @@ tracks/2/keys = {
 script = ExtResource( 1 )
 
 [node name="Backgrounds" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="background" type="Sprite" parent="Backgrounds"]
 material = SubResource( 1 )
@@ -252,6 +251,7 @@ rotation = 1.57079
 shape = SubResource( 3 )
 
 [node name="teleport_left" type="Area2D" parent="WorldBorders"]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/teleport_left"]
 position = Vector2( 2628.1, 1868.76 )
