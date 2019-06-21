@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Portal.gd" type="Script" id=1]
+[ext_resource path="res://scripts/LocalPortal.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -35,9 +35,8 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 120.725
 
-[node name="Portal" type="Node2D"]
+[node name="LocalPortal" type="Node2D"]
 script = ExtResource( 1 )
-new_scene = ""
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/light = SubResource( 1 )
@@ -46,7 +45,6 @@ anims/light = SubResource( 1 )
 scale = Vector2( 1.33057, 1.44129 )
 texture = ExtResource( 2 )
 texture_scale = 0.5
-color = Color( 1, 0, 0, 1 )
 energy = 1.32831
 range_height = 100.0
 
@@ -55,6 +53,7 @@ scale = Vector2( 0.519699, 0.519699 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2( 20, -50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

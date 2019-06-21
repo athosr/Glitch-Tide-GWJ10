@@ -1,6 +1,6 @@
 extends Node2D
 
-export var new_scene : String
+export var new_location : NodePath
 export var color : Color
 
 func _ready():
@@ -9,4 +9,4 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group('player'):
-		get_tree().change_scene(new_scene)
+		body.global_position = get_node(new_location).global_position

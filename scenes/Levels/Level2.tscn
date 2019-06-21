@@ -673,7 +673,8 @@ anims/creature_patrol2 = SubResource( 20 )
 
 [node name="Portal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 4311, -453.789 )
-next_level = "res://scenes/Levels/Level3.tscn"
+new_scene = "res://scenes/Levels/Level3.tscn"
+color = Color( 1, 0, 0, 1 )
 
 [node name="Light2D2" type="Light2D" parent="Portal"]
 texture = ExtResource( 9 )

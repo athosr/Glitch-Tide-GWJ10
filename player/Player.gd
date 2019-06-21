@@ -70,7 +70,7 @@ func set_arrow():
 	original_gravity = GRAVITY
 	$BodyPivot/BodyParameter.scale.x *= -1
 
-func _on_Menu_pressed():
+func _on_Menu_pressed() -> void:
 	get_tree().change_scene("res://scenes/Interface/Menu.tscn")
 func _on_Exit_pressed():
 	get_tree().quit()

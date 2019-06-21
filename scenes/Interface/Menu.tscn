@@ -159,6 +159,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "exit"
 
 [node name="Controls" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 380, 230 )
 
@@ -220,6 +221,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "Options"
 
 [node name="Player" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 110, 50 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
@@ -315,6 +317,7 @@ text = "Everything: Athos Rodrigues"
 anims/credits = SubResource( 12 )
 
 [node name="AudioHandler" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Pt1" type="AudioStreamPlayer2D" parent="AudioHandler"]
 stream = ExtResource( 11 )
