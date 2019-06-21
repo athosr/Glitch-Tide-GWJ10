@@ -10,7 +10,7 @@ func _ready():
 	$AudioHandler/Ambient.play()
 	d = dialog.instance()
 	if PlayerVariables.deaths == 0:
-		d.dialog = ['              What the fuck is happening here?', "          This doesn't makes any sense at all", '           Well, maybe just a little bit']
+		d.dialog = ['              What the **** is happening here?', "          This doesn't makes any sense at all", '           Well, maybe just a little bit']
 	else:
 		d.dialog = ["Well, this isn't too obvious...", "          Try Again"]
 	$CanvasLayer.add_child(d)

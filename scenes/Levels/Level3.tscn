@@ -1,201 +1,461 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scripts/Levels/Level3.gd" type="Script" id=1]
-[ext_resource path="res://shaders/wind.shader" type="Shader" id=2]
-[ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Creatures/GlitchCreature.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Levels/Level4.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=2]
+[ext_resource path="res://shaders/water.shader" type="Shader" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/wavs/lvl3.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/wavs/missed.wav" type="AudioStream" id=7]
+[ext_resource path="res://scenes/Etc/LocalPortal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Etc/Portal.tscn" type="PackedScene" id=9]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 2 )
-shader_param/OCTAVES = 6
-shader_param/color = Vector3( 1, 0.5, 0.9 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/color = Vector3( 1, 0, 0.5 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 138.825, 1266.27 )
+[sub_resource type="CircleShape2D" id=3]
+radius = 69.0402
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 503.329, 97.7491 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 72.669
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 24.1436, 339.633 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4703.89, 741.092 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "creature_flying"
-length = 20.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("GlitchCreature:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 2420.6, 1332.9 ), Vector2( 20000, 1332.9 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("GlitchCreature:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("GlitchCreature:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "Camera"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 6, 6 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Player/Camera2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 48.1375, -62.7548 ), Vector2( 978.137, -452.755 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Player/Camera2D:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "weather"
-length = 20.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 5, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
-}
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 126.046, 14801.9 )
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ]
-}
 
-[node name="background" type="Sprite" parent="."]
-material = SubResource( 1 )
-position = Vector2( 76871.6, 1024.36 )
-scale = Vector2( 150.02, 20 )
-texture = ExtResource( 3 )
+[node name="CameraInterpolation" type="Tween" parent="."]
+
+[node name="background2" type="Sprite" parent="."]
+position = Vector2( 2906.48, 3107.67 )
+scale = Vector2( 50, 100 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Obstacles" type="Node2D" parent="."]
-editor/display_folded = true
+[node name="background" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 2906.48, 3107.67 )
+scale = Vector2( 50, 100 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Obstacles"]
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2( 2913.7, 1926.96 )
+current = true
+zoom = Vector2( 3, 3 )
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D"]
-position = Vector2( 3077.83, -3192.17 )
-shape = SubResource( 6 )
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 19440.8, 33784.3 )
+scale = Vector2( 19.7379, 24.3183 )
+texture = ExtResource( 4 )
 
-[node name="GlitchCreature" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
-position = Vector2( 2420.6, 1332.9 )
-
-[node name="AnimatedSprite" parent="GlitchCreature" index="0"]
-position = Vector2( 260, 0 )
-frame = 1
-
-[node name="CollisionShape2D" parent="GlitchCreature" index="1"]
-position = Vector2( 230, 180 )
-
-[node name="RideCreature" type="Area2D" parent="GlitchCreature"]
-editor/display_folded = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchCreature/RideCreature"]
-position = Vector2( 260, -20 )
-shape = SubResource( 3 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="GlitchCreature"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchCreature/StaticBody2D"]
-position = Vector2( -160, 0 )
-shape = SubResource( 7 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GlitchCreature/StaticBody2D"]
-position = Vector2( 730, 0 )
-shape = SubResource( 7 )
-
-[node name="Creature" type="AnimationPlayer" parent="."]
-anims/creature_flying = SubResource( 2 )
-
-[node name="CameraEffects" type="AnimationPlayer" parent="."]
-anims/Camera = SubResource( 4 )
-
-[node name="Effects" type="AnimationPlayer" parent="."]
-anims/weather = SubResource( 5 )
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.333333, 0.333333, 0.333333, 1 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="icon2" type="Sprite" parent="."]
+position = Vector2( -39945.7, 30118.4 )
+scale = Vector2( 19.7379, 19.4632 )
+texture = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2905.94, -4276.82 )
+position = Vector2( 2902.44, 1182.76 )
 
 [node name="StateMachine" parent="Player" index="2"]
 START_STATE = NodePath("Diving")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 48.1375, -62.7548 )
-current = true
-zoom = Vector2( 2, 2 )
-[connection signal="body_entered" from="GlitchCreature/RideCreature" to="." method="_on_RideCreature_body_entered"]
-[connection signal="body_exited" from="GlitchCreature/RideCreature" to="." method="_on_RideCreature_body_exited"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 6 )
+volume_db = -20.0
+pitch_scale = 2.0
 
-[editable path="GlitchCreature"]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 7 )
+volume_db = -10.0
+max_distance = 500000.0
+
+[node name="Steps" type="Node2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Beginning" type="Position2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 2913.76, 637.758 )
+
+[node name="Beginning" type="Area2D" parent="Steps/Beginning"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Beginning/Beginning"]
+shape = SubResource( 3 )
+
+[node name="Step1" type="Node2D" parent="Steps"]
+editor/display_folded = true
+
+[node name="Camera" type="Camera2D" parent="Steps/Step1"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step1"]
+
+[node name="1" parent="Steps/Step1/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="2" parent="Steps/Step1/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step1/PortalLocation/Right")
+randomColor = true
+
+[node name="3" parent="Steps/Step1/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step1"]
+
+[node name="Right" type="Position2D" parent="Steps/Step1/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step1" type="Area2D" parent="Steps/Step1/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step1/PortalLocation/Right/step1"]
+shape = SubResource( 1 )
+
+[node name="Step2" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 1800 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step2"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step2"]
+
+[node name="1" parent="Steps/Step2/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step2/PortalLocation/Right")
+randomColor = true
+
+[node name="2" parent="Steps/Step2/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step2/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step2"]
+
+[node name="Right" type="Position2D" parent="Steps/Step2/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step2" type="Area2D" parent="Steps/Step2/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step2/PortalLocation/Right/step2"]
+shape = SubResource( 1 )
+
+[node name="Step3" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 3600 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step3"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step3"]
+
+[node name="1" parent="Steps/Step3/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="2" parent="Steps/Step3/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step3/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step3/PortalLocation/Right")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step3"]
+
+[node name="Right" type="Position2D" parent="Steps/Step3/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step3" type="Area2D" parent="Steps/Step3/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step3/PortalLocation/Right/step3"]
+shape = SubResource( 1 )
+
+[node name="Step4" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 5400 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step4"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step4"]
+
+[node name="1" parent="Steps/Step4/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="2" parent="Steps/Step4/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step4/PortalLocation/Right")
+randomColor = true
+
+[node name="3" parent="Steps/Step4/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step4"]
+
+[node name="Right" type="Position2D" parent="Steps/Step4/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step4" type="Area2D" parent="Steps/Step4/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step4/PortalLocation/Right/step4"]
+shape = SubResource( 1 )
+
+[node name="Step5" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 7200 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step5"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step5"]
+
+[node name="1" parent="Steps/Step5/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="2" parent="Steps/Step5/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step5/PortalLocation/Right")
+randomColor = true
+
+[node name="3" parent="Steps/Step5/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step5"]
+
+[node name="Right" type="Position2D" parent="Steps/Step5/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step5" type="Area2D" parent="Steps/Step5/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step5/PortalLocation/Right/step5"]
+shape = SubResource( 1 )
+
+[node name="Step6" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 9000 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step6"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step6"]
+
+[node name="1" parent="Steps/Step6/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step6/PortalLocation/Right")
+randomColor = true
+
+[node name="2" parent="Steps/Step6/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step6/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step6"]
+
+[node name="Right" type="Position2D" parent="Steps/Step6/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step6" type="Area2D" parent="Steps/Step6/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step6/PortalLocation/Right/step6"]
+shape = SubResource( 1 )
+
+[node name="Step7" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 10800 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step7"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step7"]
+
+[node name="1" parent="Steps/Step7/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step7/PortalLocation/Right")
+randomColor = true
+
+[node name="2" parent="Steps/Step7/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step7/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step7"]
+
+[node name="Right" type="Position2D" parent="Steps/Step7/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step7" type="Area2D" parent="Steps/Step7/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step7/PortalLocation/Right/step7"]
+shape = SubResource( 1 )
+
+[node name="Step8" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 12600 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step8"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step8"]
+
+[node name="1" parent="Steps/Step8/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step8/PortalLocation/Right")
+randomColor = true
+
+[node name="2" parent="Steps/Step8/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step8/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step8"]
+
+[node name="Right" type="Position2D" parent="Steps/Step8/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step8" type="Area2D" parent="Steps/Step8/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step8/PortalLocation/Right/step8"]
+shape = SubResource( 1 )
+
+[node name="Step9" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 14400 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step9"]
+position = Vector2( 2913.7, 1926.96 )
+zoom = Vector2( 3, 3 )
+
+[node name="Portals" type="Node2D" parent="Steps/Step9"]
+
+[node name="1" parent="Steps/Step9/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2510.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="2" parent="Steps/Step9/Portals" instance=ExtResource( 8 )]
+position = Vector2( 2910.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Beginning")
+randomColor = true
+
+[node name="3" parent="Steps/Step9/Portals" instance=ExtResource( 8 )]
+position = Vector2( 3310.41, 2579.27 )
+new_location = NodePath("../../../../../Level3/Steps/Step9/PortalLocation/Right")
+color = Color( 0, 0, 0, 1 )
+randomColor = true
+
+[node name="PortalLocation" type="Node2D" parent="Steps/Step9"]
+
+[node name="Right" type="Position2D" parent="Steps/Step9/PortalLocation"]
+position = Vector2( 2913.76, 2887.76 )
+
+[node name="step9" type="Area2D" parent="Steps/Step9/PortalLocation/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step9/PortalLocation/Right/step9"]
+shape = SubResource( 1 )
+
+[node name="Step10" type="Node2D" parent="Steps"]
+editor/display_folded = true
+position = Vector2( 0, 16200 )
+
+[node name="Camera" type="Camera2D" parent="Steps/Step10"]
+position = Vector2( 2913.7, 3746.96 )
+zoom = Vector2( 9, 9 )
+
+[node name="Portal" parent="Steps/Step10" instance=ExtResource( 9 )]
+position = Vector2( 2912.78, 6108.1 )
+scale = Vector2( 10, 10 )
+new_scene = "res://scenes/Levels/Level4.tscn"
+color = Color( 1, 0, 0, 1 )
+
+[node name="zoomArea" type="Area2D" parent="Steps/Step10"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steps/Step10/zoomArea"]
+position = Vector2( 2911, 3270 )
+shape = SubResource( 4 )
+
+[node name="WorldBorders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/StaticBody2D"]
+position = Vector2( 2178.56, 8552.67 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders/StaticBody2D"]
+position = Vector2( 3638.56, 8552.67 )
+shape = SubResource( 5 )
+[connection signal="body_entered" from="Steps/Beginning/Beginning" to="." method="_on_Beginning_body_entered"]
+[connection signal="body_entered" from="Steps/Step1/PortalLocation/Right/step1" to="." method="_on_step1_body_entered"]
+[connection signal="body_entered" from="Steps/Step2/PortalLocation/Right/step2" to="." method="_on_step2_body_entered"]
+[connection signal="body_entered" from="Steps/Step3/PortalLocation/Right/step3" to="." method="_on_step3_body_entered"]
+[connection signal="body_entered" from="Steps/Step4/PortalLocation/Right/step4" to="." method="_on_step4_body_entered"]
+[connection signal="body_entered" from="Steps/Step5/PortalLocation/Right/step5" to="." method="_on_step5_body_entered"]
+[connection signal="body_entered" from="Steps/Step6/PortalLocation/Right/step6" to="." method="_on_step6_body_entered"]
+[connection signal="body_entered" from="Steps/Step7/PortalLocation/Right/step7" to="." method="_on_step7_body_entered"]
+[connection signal="body_entered" from="Steps/Step8/PortalLocation/Right/step8" to="." method="_on_step8_body_entered"]
+[connection signal="body_entered" from="Steps/Step9/PortalLocation/Right/step9" to="." method="_on_step9_body_entered"]
+[connection signal="body_entered" from="Steps/Step10/zoomArea" to="." method="_on_zoomArea_body_entered"]
 
 [editable path="Player"]

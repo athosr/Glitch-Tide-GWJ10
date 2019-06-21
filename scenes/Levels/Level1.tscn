@@ -344,7 +344,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 [node name="Portal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3672.96, 1318.89 )
 scale = Vector2( 0.7, 0.7 )
-new_scene = "res://scenes/Levels/Level1.tscn"
+new_scene = "res://scenes/Levels/Level2.tscn"
 color = Color( 1, 0, 0, 1 )
 
 [node name="PlayerStart" type="Position2D" parent="."]

@@ -45,7 +45,7 @@ custom_colors/font_color = Color( 0.87451, 0, 1, 1 )
 text = "2"
 
 [node name="Level3" type="Button" parent="Levels"]
-modulate = Color( 0.85098, 0, 1, 0.215686 )
+modulate = Color( 0.85098, 0, 1, 1 )
 margin_left = 540.0
 margin_top = 170.0
 margin_right = 661.0
@@ -74,4 +74,5 @@ custom_fonts/font = ExtResource( 4 )
 text = "menu"
 [connection signal="pressed" from="Levels/Level1" to="." method="_on_Level1_pressed"]
 [connection signal="pressed" from="Levels/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="Levels/Level3" to="." method="_on_Level3_pressed"]
 [connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]

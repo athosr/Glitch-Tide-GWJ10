@@ -165,7 +165,6 @@ position = Vector2( 380, 230 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Controls"]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Jump" type="Label" parent="Controls/AnimatedSprite"]
