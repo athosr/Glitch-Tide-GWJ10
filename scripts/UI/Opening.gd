@@ -4,7 +4,7 @@ var fade = preload("res://scenes/Interface/Fade.tscn")
 
 var finished : bool = false
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	var f = fade.instance()
 	f.time = 1
 	f.in_mode = true

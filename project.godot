@@ -38,10 +38,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GWJ10"
+config/name="Glitch Tide"
 run/main_scene="res://scenes/Interface/Opening.tscn"
 boot_splash/image="res://assets/sprites/UI/Godot Logo/wallpaper.png"
-config/icon="res://icon.png"
+config/icon="res://assets/sprites/misc/icon.png"
 
 [autoload]
 

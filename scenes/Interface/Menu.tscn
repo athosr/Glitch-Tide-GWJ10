@@ -1,20 +1,21 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/misc/black_background.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/LYS_Font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/sprites/UI/Menu/arrow.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/UI/Menu/wasd.png" type="Texture" id=5]
-[ext_resource path="res://assets/fonts/DK-Lemon-Yellow-Sun.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/sprites/UI/Menu/esc.png" type="Texture" id=7]
-[ext_resource path="res://shaders/fog.shader" type="Shader" id=8]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=10]
-[ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=11]
+[ext_resource path="res://scenes/Interface/Logo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/UI/Menu/arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/UI/Menu/wasd.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/DK-Lemon-Yellow-Sun.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/sprites/UI/Menu/esc.png" type="Texture" id=8]
+[ext_resource path="res://shaders/fog.shader" type="Shader" id=9]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sprites/misc/light.png" type="Texture" id=11]
+[ext_resource path="res://assets/audio/wavs/menu.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 1.0
@@ -22,7 +23,7 @@ animations = [ {
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 869.6, 10 )
@@ -40,7 +41,7 @@ extents = Vector2( 509.385, 46.1781 )
 extents = Vector2( 582.905, 46.1781 )
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 8 )
+shader = ExtResource( 9 )
 shader_param/OCTAVES = 6
 shader_param/color = Vector3( 0.33, 0.15, 0.82 )
 
@@ -52,7 +53,7 @@ extents = Vector2( 863.219, 211.066 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 50
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "credits"
@@ -158,6 +159,11 @@ margin_bottom = 284.0
 custom_fonts/font = ExtResource( 3 )
 text = "exit"
 
+[node name="Logo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 398.874, 38.324 )
+scale = Vector2( 0.415816, 0.399313 )
+frame = 4
+
 [node name="Controls" type="Node2D" parent="."]
 editor/display_folded = true
 visible = false
@@ -165,6 +171,7 @@ position = Vector2( 380, 230 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Controls"]
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Jump" type="Label" parent="Controls/AnimatedSprite"]
@@ -209,7 +216,7 @@ text = "Down Platform"
 
 [node name="esc" type="Sprite" parent="Controls"]
 position = Vector2( -1.89423, 144.79 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="DownPlatform2" type="Label" parent="Controls/esc"]
 margin_left = -39.1058
@@ -220,7 +227,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "Options"
 
 [node name="Player" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 110, 50 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
@@ -265,7 +271,7 @@ margin_bottom = 357.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
 
-[node name="Player" parent="Player" instance=ExtResource( 9 )]
+[node name="Player" parent="Player" instance=ExtResource( 10 )]
 position = Vector2( 670, 270 )
 
 [node name="EventTrigger" type="Node2D" parent="."]
@@ -296,7 +302,7 @@ polygon = PoolVector2Array( 1061.05, -0.97673, 1030.09, 602.182, -16.232, 603.23
 [node name="Light2D" type="Light2D" parent="CreditsScreen"]
 position = Vector2( 510, 310 )
 rotation = 6.03186
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 texture_scale = 0.904571
 energy = 1.46
 
@@ -319,7 +325,7 @@ anims/credits = SubResource( 12 )
 editor/display_folded = true
 
 [node name="Pt1" type="AudioStreamPlayer2D" parent="AudioHandler"]
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 autoplay = true
 [connection signal="pressed" from="Play" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="LevelSelect" to="." method="_on_LevelSelect_pressed"]
