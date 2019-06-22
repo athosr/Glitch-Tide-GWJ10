@@ -162,7 +162,7 @@ text = "exit"
 [node name="Logo" parent="." instance=ExtResource( 4 )]
 position = Vector2( 398.874, 38.324 )
 scale = Vector2( 0.415816, 0.399313 )
-frame = 4
+frame = 22
 
 [node name="Controls" type="Node2D" parent="."]
 editor/display_folded = true

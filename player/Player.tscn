@@ -187,7 +187,7 @@ text = "the game is not paused"
 
 [node name="Logo" parent="CanvasLayer/Options" instance=ExtResource( 23 )]
 position = Vector2( 514.137, 95.6925 )
-frame = 1
+frame = 3
 [connection signal="timeout" from="StateMachine/Fall/Timer" to="StateMachine/Fall" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Options/TextureRect/Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Options/TextureRect/Exit" to="." method="_on_Exit_pressed"]

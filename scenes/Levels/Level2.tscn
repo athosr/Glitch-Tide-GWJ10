@@ -627,7 +627,6 @@ shape = SubResource( 15 )
 
 [node name="Camera1" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
